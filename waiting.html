@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application status | VALDOC AICTE EoA Pre-Check</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="waiting">
+  <div class="proto">
+    <span>VALDOC Applicant Status Tracker · Problem Statement SIH26261</span>
+    <span id="waitAttemptText">Re-upload Attempts Remaining: 2 of 3</span>
+  </div>
+
+  <header class="nav">
+    <a class="logo" href="index.html">
+      <span class="mark">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span>VALDOC · AICTE EoA Pre-Check</span>
+    </a>
+    <nav>
+      <span class="who">Sample Institute of Technology</span>
+      <a class="btn btn-line btn-sm" href="upload.html">Re-upload</a>
+      <a class="btn btn-line btn-sm" href="index.html">Log out</a>
+    </nav>
+  </header>
+
+  <main class="page narrow">
+    <div class="head">
+      <h1>Application status</h1>
+      <p>Application ID: AICTE-EOA-2026-04817 · Institute: Sample Institute of Technology</p>
+    </div>
+
+    <ol class="stepper">
+      <li class="done">Upload documents</li>
+      <li class="done">AI pre-check</li>
+      <li class="current">Officer review</li>
+      <li>Decision</li>
+    </ol>
+
+    <section id="statusPanel" class="panel status" data-state="pending">
+      <h2 id="statusTitle">Waiting for officer approval</h2>
+      <p id="statusText" class="muted"></p>
+      <span id="statusBadge" class="badge b-info">Pending officer review</span>
+      <p id="officerNote" class="note" hidden></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Pre-check summary</h3>
+        <a class="btn btn-line btn-sm" href="upload.html">Re-upload Flagged Document</a>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Declared vs. Found</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fire Safety Certificate</td>
+              <td>Declared: 2027 · <strong class="bad">Found: Expired Mar 2024 (ELA)</strong></td>
+              <td><span class="badge b-warn">Flagged for officer review</span></td>
+            </tr>
+            <tr>
+              <td>Building and Land Document</td>
+              <td>Declared: 5.2 acres · <strong>Found: 5.2 acres (QR matched)</strong></td>
+              <td><span class="badge b-ok">Passed</span></td>
+            </tr>
+            <tr>
+              <td>Faculty List and Ratio Details</td>
+              <td>Declared: 1:20 · <strong class="bad">Found: 1:24.5 (98 / 2,401)</strong></td>
+              <td><span class="badge b-warn">Flagged for officer review</span></td>
+            </tr>
+            <tr>
+              <td>Fixed Deposit Receipt or Financial Mandate</td>
+              <td>Declared: Rs 5,00,000 · <strong>Found: Rs 5,00,000</strong></td>
+              <td><span class="badge b-ok">Passed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="demo">
+    <span>Demo mode</span>
+    <a href="officer_dashboard.html">Open officer dashboard</a>
+    <a href="admin.html">Admin console</a>
+    <a href="upload.html" id="resetDemo">Reset</a>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

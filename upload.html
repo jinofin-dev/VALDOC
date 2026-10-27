@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit documents | VALDOC AICTE EoA Pre-Check</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="upload">
+  <div class="proto">
+    <span>VALDOC Applicant Portal · Problem Statement SIH26261 (AICTE)</span>
+    <span id="attemptBanner">Submission Attempts: 1 of 3 (Max 3 allowed)</span>
+  </div>
+
+  <header class="nav">
+    <a class="logo" href="index.html">
+      <span class="mark">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span>VALDOC · AICTE EoA Pre-Check</span>
+    </a>
+    <nav>
+      <span class="who">Sample Institute of Technology</span>
+      <a class="btn btn-line btn-sm" href="waiting.html">Status</a>
+      <a class="btn btn-line btn-sm" href="index.html">Log out</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="head">
+      <h1>Submit documents</h1>
+      <p>Verify your declared institute particulars and upload the four mandatory EoA documents. In this demo you can also load sample files or continue directly.</p>
+    </div>
+
+    <ol class="stepper">
+      <li class="current">Upload documents</li>
+      <li>AI pre-check</li>
+      <li>Officer review</li>
+      <li>Decision</li>
+    </ol>
+
+    <section class="panel">
+      <h3>Institute details &amp; declared figures</h3>
+      <div class="fields">
+        <label>Institute name<input id="instName" type="text" value="Sample Institute of Technology"></label>
+        <label>Application ID<input id="appId" type="text" value="AICTE-EOA-2026-04817"></label>
+        <label>Enrolled students / intake<input type="text" value="2401"></label>
+        <label>Declared faculty ratio<input type="text" value="1:20"></label>
+        <label>Declared land area<input type="text" value="5.2 acres"></label>
+        <label>Declared Fixed Deposit<input type="text" value="Rs 5,00,000"></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Mandatory documents</h3>
+          <p class="sub">Screened by Website Firewall &amp; DPDP Act 2023 PII masking guardrails.</p>
+        </div>
+        <button id="fillSampleBtn" type="button" class="btn btn-line btn-sm">Load Sample Demo Files</button>
+      </div>
+
+      <div class="docs">
+        <label class="dropzone" data-sample="Fire_Safety_NOC_2026.pdf">
+          <input type="file" hidden>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <strong>Fire Safety Certificate</strong>
+          <small>Choose a file (Checks ELA &amp; validity date)</small>
+        </label>
+        <label class="dropzone" data-sample="Land_Registry_Survey48.pdf">
+          <input type="file" hidden>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <strong>Building and Land Document</strong>
+          <small>Choose a file (Checks acreage &amp; QR)</small>
+        </label>
+        <label class="dropzone" data-sample="Faculty_List_2026.pdf">
+          <input type="file" hidden>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <strong>Faculty List and Ratio Details</strong>
+          <small>Choose a file (Counts ratio &amp; masks IDs)</small>
+        </label>
+        <label class="dropzone" data-sample="FDR_Receipt_5Lakhs.pdf">
+          <input type="file" hidden>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <strong>Fixed Deposit Receipt or Financial Mandate</strong>
+          <small>Choose a file (Verifies Rs 5,00,000 mandate)</small>
+        </label>
+      </div>
+
+      <button id="submitBtn" class="btn btn-solid btn-lg btn-block" type="button">Upload and run pre-check</button>
+
+      <div id="scan" class="scan" hidden>
+        <div class="progress"><div id="bar"></div></div>
+        <ul id="steps">
+          <li>Checking scan clarity &amp; running ELA forensics (OpenCV + PyMuPDF)</li>
+          <li>Extracting figures with EasyOCR &amp; masking personal IDs (DPDP Act)</li>
+          <li>Verifying QR codes and duplicate hashes (Pyzbar + ImageHash)</li>
+          <li>Validating against AICTE Handbook Rule Table &amp; AI Guardrails</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="demo">
+    <span>Demo mode</span>
+    <a href="officer_dashboard.html">Officer dashboard</a>
+    <a href="admin.html">Admin console</a>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

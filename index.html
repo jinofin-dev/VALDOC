@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VALDOC | AICTE EoA AI Pre-Check (SIH26261)</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+  <div class="proto">
+    <span>Prototype built for Smart India Hackathon 2026 · Problem Statement SIH26261 (AICTE) · Team HACKATTACK</span>
+    <span>Demonstration build — Advisory Pre-Check</span>
+  </div>
+
+  <header class="nav">
+    <a class="logo" href="index.html">
+      <span class="mark">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span>VALDOC · AICTE EoA Pre-Check</span>
+    </a>
+    <nav>
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#scope">Demo Scope</a>
+      <a href="admin.html">Admin Console</a>
+      <a class="btn btn-line btn-sm" href="login.html">Log in</a>
+      <a class="btn btn-solid btn-sm" href="signup.html">Sign up</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Check Extension of Approval documents before they reach the officer</h1>
+      <p>VALDOC detects edited certificates with Error Level Analysis (ELA), reads key figures with OCR, and compares them against editable AICTE handbook norms. Every finding is advisory—the AICTE officer makes the final decision.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light btn-lg" href="signup.html">Register a college</a>
+        <a class="btn btn-ghost btn-lg" href="login.html">Officer / Admin log in</a>
+      </div>
+    </div>
+
+    
+  </section>
+
+  <section id="capabilities" class="band">
+    <h2>What the pre-check does</h2>
+    <div class="caps">
+      <div class="scope-box"> 
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="M21 21l-4.3-4.3"/>
+        </svg>
+        <h3>Tamper &amp; QR detection</h3>
+        <p>Error Level Analysis (OpenCV + PyMuPDF) highlights dates, stamps, and signatures edited after issue, while ImageHash and Pyzbar check QR codes and reused scans.</p>
+      </div>
+      <div class="scope-box">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <path d="M14 2v6h6M8 13h8M8 17h8"/>
+        </svg>
+        <h3>Figure extraction &amp; rules</h3>
+        <p>Vision AI and EasyOCR read land area, faculty strength, validity dates, and deposit amounts, comparing each figure with what the college declared and AICTE rules.</p>
+      </div>
+      <div class="scope-box">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M16 11l2 2 4-4"/>
+        </svg>
+        <h3>Officer &amp; Admin in control</h3>
+        <p>Unclear scans are flagged for manual review (with up to 3 re-uploads). Admins configure AICTE rules in JSON, and officers verify, query, or reject with an audit note.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="flow-wrap">
+    <section id="process" class="band">
+      <h2>How an application moves</h2>
+      <ol class="flow">
+        <li>
+          <h3>College uploads</h3>
+          <p>Fire safety, land and building, faculty, and financial documents are submitted together (max 3 attempts).</p>
+        </li>
+        <li>
+          <h3>AI pre-check runs</h3>
+          <p>Clarity check, ELA forensics, OCR extraction, and AICTE rule validation finish in seconds.</p>
+        </li>
+        <li>
+          <h3>Officer reviews</h3>
+          <p>Flagged and unclear items open with highlighted source evidence alongside extracted figures.</p>
+        </li>
+        <li>
+          <h3>Decision is logged</h3>
+          <p>The college sees the outcome and officer note, while the decision is recorded in the audit log.</p>
+        </li>
+      </ol>
+    </section>
+  </div>
+
+  <section id="scope" class="band">
+    <h2>Demonstration architecture &amp; scope</h2>
+    <div class="caps">
+      <div class="scope-box">
+        <span class="badge b-ok">Implemented in Demo</span>
+        <h3>Working Portal Workflow</h3>
+        <p>Live state sync across College Upload, Waiting Status, Officer Dashboard, and Admin Rule Console via <code>localStorage</code>, including interactive evidence inspection and report download.</p>
+      </div>
+      <div class="scope-box">
+        <span class="badge b-info">Simulated for Presentation</span>
+        <h3>AI, OCR &amp; Forensics</h3>
+        <p>Simulated OpenCV ELA tampering alerts, EasyOCR figure comparison, Pyzbar QR checks, Website Firewall screening, and DPDP Act 2023 personal ID redaction.</p>
+      </div>
+      <div class="scope-box">
+        <span class="badge b-warn">Proposed Roadmap</span>
+        <h3>Production Integrations</h3>
+        <p>Python + Django database backend, direct DigiLocker / issuing-authority API checks, and expansion to UGC, NCTE, and PCI regulatory councils.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div>
+      <h2>Explore all three roles in the demo</h2>
+      <p>Walk through the College upload, the AICTE Officer review, and the Admin rule configuration.</p>
+    </div>
+    <div class="hero-actions" style="margin-top:0">
+      <a class="btn btn-light btn-lg" href="upload.html">College View</a>
+      <a class="btn btn-ghost btn-lg" href="officer_dashboard.html">Officer View</a>
+      <a class="btn btn-ghost btn-lg" href="admin.html">Admin View</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>VALDOC · AI Pre-Check Assistant for AICTE EoA (SIH26261)</span>
+    <span>Demonstration build, no real data is processed</span>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

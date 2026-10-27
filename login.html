@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in | VALDOC AICTE EoA Pre-Check</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="login">
+  <div class="auth">
+    <aside class="auth-side">
+      <a class="logo light" href="index.html">
+        <span class="mark">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </span>
+        <span>VALDOC · AICTE EoA Pre-Check</span>
+      </a>
+      <div>
+        <h2>Welcome back</h2>
+        <p>Log in as a College Applicant, an AICTE Scrutiny Officer, or a System Administrator.</p>
+        <ul>
+          <li>Edited documents are flagged with ELA evidence</li>
+          <li>Declared and extracted figures sit side by side</li>
+          <li>Admins configure AICTE rules via the JSON rule table</li>
+          <li>The officer always makes the final decision</li>
+        </ul>
+      </div>
+      <span class="sub" style="color:#8fa0b8">SIH 2026 (PS: SIH26261) · Demonstration build</span>
+    </aside>
+
+    <main class="auth-box">
+      <form id="loginForm" class="form">
+        <h2>Log in</h2>
+        <div class="seg">
+          <button type="button" class="active" data-role="college">College</button>
+          <button type="button" data-role="officer">AICTE officer</button>
+          <button type="button" data-role="admin">Admin</button>
+        </div>
+        <label>
+          Email or user ID
+          <input id="loginEmail" type="text" placeholder="admin@college.edu" value="principal@sampletech.edu.in">
+        </label>
+        <label>
+          Password
+          <input type="password" placeholder="Enter your password" value="demo2026">
+        </label>
+        <button class="btn btn-solid btn-lg btn-block" type="submit">Log in</button>
+        <p class="small">New college? <a href="signup.html">Create an account</a></p>
+        <p class="small">In this demo every field is optional. Choose a role above and log in.</p>
+      </form>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Console | VALDOC AICTE EoA Pre-Check</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+  <div class="proto">
+    <span>VALDOC System Administration Console · Problem Statement SIH26261 · Team HACKATTACK</span>
+    <span>Role: System Administrator (Rule Table, Guardrails &amp; Saved Reports)</span>
+  </div>
+
+  <header class="nav">
+    <a class="logo" href="index.html">
+      <span class="mark">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span>VALDOC · AICTE EoA Pre-Check</span>
+    </a>
+    <nav>
+      <a href="#ruleSection">Rule Table (JSON)</a>
+      <a href="#firewallSection">Firewall &amp; Guardrails</a>
+      <a href="#reportsSection">Saved Reports</a>
+      <span class="who">System Admin (AICTE HQ)</span>
+      <a class="btn btn-line btn-sm" href="officer_dashboard.html">Officer View</a>
+      <a class="btn btn-line btn-sm" href="index.html">Log out</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="head">
+      <h1>System Administration &amp; Rule Configuration</h1>
+      <p>Manage editable AICTE Approval Process Handbook (2024–27) rules, monitor Website Firewall &amp; AI Guardrails, and inspect saved verification reports.</p>
+    </div>
+
+    <div class="figures">
+      <div><b id="admRuleCount">5</b>Active AICTE Handbook Rules</div>
+      <div><b>4</b>Saved Verification Reports</div>
+      <div><b id="admMaxAttempts">3</b>Max Re-upload Attempts</div>
+      <div><b>Active</b>Firewall &amp; DPDP Guardrails</div>
+    </div>
+
+    <section id="ruleSection" class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>AICTE Rule Table Configuration (JSON + Database Settings)</h3>
+          <p class="sub">Updates to the AICTE Approval Process Handbook are configured here without modifying application source code.</p>
+        </div>
+        <span class="badge b-info">Simulated JSON Rule Engine</span>
+      </div>
+
+      <form id="adminRuleForm">
+        <div class="fields">
+          <label>
+            Handbook Version Standard
+            <input id="cfgHandbook" type="text" value="AICTE APH 2024–27">
+          </label>
+          <label>
+            Max Student-to-Faculty Ratio (UG)
+            <input id="cfgRatio" type="text" value="1:20">
+          </label>
+          <label>
+            Minimum Contiguous Land Area (Acres)
+            <input id="cfgLand" type="number" step="0.1" value="5.0">
+          </label>
+          <label>
+            Minimum Fixed Deposit Corpus (Rs)
+            <input id="cfgFdr" type="number" step="50000" value="500000">
+          </label>
+          <label>
+            Max Applicant Re-upload Attempts
+            <input id="cfgAttempts" type="number" min="1" max="5" value="3">
+          </label>
+          <label>
+            Min OCR Confidence Before Manual Review (%)
+            <input id="cfgOcrConf" type="number" min="50" max="95" value="75">
+          </label>
+        </div>
+
+        <div class="json-preview-wrap">
+          <span class="sub">Active <code>rule_table.json</code> payload preview:</span>
+          <pre id="jsonPreview" class="json-preview"></pre>
+        </div>
+
+        <div class="actions" style="margin-top:16px">
+          <button type="submit" class="btn btn-solid">Save Rule Table Settings</button>
+          <button type="button" id="resetRulesBtn" class="btn btn-line">Reset to APH 2024–27 Defaults</button>
+          <button type="button" id="exportJsonBtn" class="btn btn-line">Download rule_table.json</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="firewallSection" class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Website Firewall &amp; AI Guardrails Control</h3>
+          <p class="sub">End-to-end security controls preventing cyberattacks, cross-checking AI outputs, and enforcing DPDP Act 2023 privacy rules.</p>
+        </div>
+        <span class="badge b-ok">CERT-In &amp; DPDP Aligned (Simulated)</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Guardrail Module</th>
+              <th>Protection Scope</th>
+              <th>Enforcement Rule</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Request &amp; Payload Firewall</strong></td>
+              <td>Screens incoming HTTP requests</td>
+              <td>Blocks SQL Injection (SQLi), XSS payloads &amp; rate-limits abusive IPs</td>
+              <td><span class="badge b-ok">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>2. Safe File Upload Filter</strong></td>
+              <td>Applicant document dropzones</td>
+              <td>Permits only verified PDF/JPG/PNG structures; blocks executable scripts</td>
+              <td><span class="badge b-ok">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>3. AI Output Cross-Check Guardrail</strong></td>
+              <td>OCR &amp; Vision AI extraction pipeline</td>
+              <td>Routes blurry scans (&lt;75% confidence) to <em>Manual Review Required</em>; blocks auto-rejection</td>
+              <td><span class="badge b-ok">Enforced</span></td>
+            </tr>
+            <tr>
+              <td><strong>4. DPDP Act 2023 PII Redaction</strong></td>
+              <td>Faculty rosters &amp; identity records</td>
+              <td>Automatically masks sensitive personal IDs as <code>[ID Redacted]</code> before storage</td>
+              <td><span class="badge b-ok">Enforced</span></td>
+            </tr>
+            <tr>
+              <td><strong>5. Role-Based Access Control (RBAC)</strong></td>
+              <td>Applicant / Officer / Admin views</td>
+              <td>Separates college submission, officer decision authority, and rule configuration</td>
+              <td><span class="badge b-ok">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reportsSection" class="panel">
+      <div class="panel-head">
+        <div>
+          <h3>Saved Verification Reports &amp; Audit Log</h3>
+          <p class="sub">System-wide archive of generated AI pre-check reports and recorded officer decisions.</p>
+        </div>
+        <button type="button" id="clearDemoStateBtn" class="btn btn-line btn-sm">Reset Live Demo State</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Report ID</th>
+              <th>Institute</th>
+              <th>AI Pre-Check Summary</th>
+              <th>Re-uploads Used</th>
+              <th>Officer Decision Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hl">
+              <td><strong>EOA-2026-04817</strong></td>
+              <td>Sample Institute of Technology<div class="sub">Coimbatore</div></td>
+              <td><span class="badge b-bad">ELA Alert + Ratio 1:24.5</span></td>
+              <td id="admLiveAttempts">1 / 3</td>
+              <td><span id="admLiveStatus" class="badge b-info">Pending officer review</span></td>
+              <td><a class="btn btn-solid btn-sm" href="officer_dashboard.html#review">Open in Officer View</a></td>
+            </tr>
+            <tr>
+              <td><strong>EOA-2026-04102</strong></td>
+              <td>Greenfield Institute of Engineering<div class="sub">Madurai</div></td>
+              <td><span class="badge b-warn">Manual Review Required (Blurry Stamp)</span></td>
+              <td>2 / 3</td>
+              <td><span class="badge b-info">Pending officer review</span></td>
+              <td><a class="btn btn-line btn-sm" href="officer_dashboard.html#review">Inspect</a></td>
+            </tr>
+            <tr>
+              <td><strong>EOA-2026-03988</strong></td>
+              <td>Riverdale College of Technology<div class="sub">Salem</div></td>
+              <td><span class="badge b-ok">All 4 Documents Verified</span></td>
+              <td>1 / 3</td>
+              <td><span class="badge b-ok">Approved</span></td>
+              <td><a class="btn btn-line btn-sm" href="officer_dashboard.html#review">Inspect</a></td>
+            </tr>
+            <tr>
+              <td><strong>EOA-2026-03655</strong></td>
+              <td>Lakshmi Polytechnic College<div class="sub">Erode</div></td>
+              <td><span class="badge b-warn">Faded Fire NOC Seal</span></td>
+              <td>2 / 3</td>
+              <td><span class="badge b-warn">Clarification requested</span></td>
+              <td><a class="btn btn-line btn-sm" href="officer_dashboard.html#review">Inspect</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="demo">
+    <span>Demo mode</span>
+    <a href="upload.html">College view</a>
+    <a href="officer_dashboard.html">Officer view</a>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

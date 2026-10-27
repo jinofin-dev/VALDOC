@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Officer dashboard | VALDOC AICTE EoA Pre-Check</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="officer">
+  <div class="proto">
+    <span>VALDOC AICTE Officer Scrutiny Console · Problem Statement SIH26261</span>
+    <span>AI findings are advisory · Final decision rests with the AICTE Officer</span>
+  </div>
+
+  <header class="nav">
+    <a class="logo" href="index.html">
+      <span class="mark">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span>VALDOC · AICTE EoA Pre-Check</span>
+    </a>
+    <nav>
+      <a href="admin.html">Admin Rule Table</a>
+      <span class="who">Dr. R. Menon, AICTE Officer</span>
+      <a class="btn btn-line btn-sm" href="index.html">Log out</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="head">
+      <h1>Officer dashboard</h1>
+      <p>Applications screened by the VALDOC AI pre-check. Findings are advisory and the final decision is yours.</p>
+    </div>
+
+    <div class="figures">
+      <div><b>4</b>Applications</div>
+      <div><b>2</b>Pending review</div>
+      <div><b>1</b>Forensic alerts</div>
+      <div><b>1</b>Manual review (Unclear scan)</div>
+    </div>
+
+    <section class="panel">
+      <h3>Applications queue</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Application</th>
+              <th>Institute</th>
+              <th>Scan Clarity</th>
+              <th>AI risk</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hl" data-row="04817">
+              <td><strong>EOA-2026-04817</strong><div class="sub">Newly submitted</div></td>
+              <td>Sample Institute of Technology<div class="sub">Coimbatore</div></td>
+              <td><span class="badge b-ok">Clear (4/4)</span></td>
+              <td><span class="badge b-bad">High</span></td>
+              <td><span id="myStatus" class="badge b-info">Pending officer review</span></td>
+              <td><a class="btn btn-solid btn-sm" href="#review" data-select-app="04817">Review</a></td>
+            </tr>
+            <tr data-row="04102">
+              <td><strong>EOA-2026-04102</strong></td>
+              <td>Greenfield Institute of Engineering<div class="sub">Madurai</div></td>
+              <td><span class="badge b-warn">Blurry Stamp</span></td>
+              <td><span class="badge b-warn">Manual Review Required</span></td>
+              <td><span class="badge b-info">Pending officer review</span></td>
+              <td><a class="btn btn-line btn-sm" href="#review" data-select-app="04102">Review</a></td>
+            </tr>
+            <tr data-row="03988">
+              <td><strong>EOA-2026-03988</strong></td>
+              <td>Riverdale College of Technology<div class="sub">Salem</div></td>
+              <td><span class="badge b-ok">Clear (4/4)</span></td>
+              <td><span class="badge b-ok">Low</span></td>
+              <td><span class="badge b-ok">Approved</span></td>
+              <td><a class="btn btn-line btn-sm" href="#review" data-select-app="03988">View</a></td>
+            </tr>
+            <tr data-row="03655">
+              <td><strong>EOA-2026-03655</strong></td>
+              <td>Lakshmi Polytechnic College<div class="sub">Erode</div></td>
+              <td><span class="badge b-warn">Faded NOC Seal</span></td>
+              <td><span class="badge b-warn">Medium</span></td>
+              <td><span class="badge b-warn">Clarification requested</span></td>
+              <td><a class="btn btn-line btn-sm" href="#review" data-select-app="03655">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="review" class="panel">
+      <div class="panel-head">
+        <div>
+          <h3 id="reviewTitle">Review: Sample Institute of Technology (EOA-2026-04817)</h3>
+          <p id="reviewSub" class="sub">Active Rule Standard: <span id="activeRuleText">SFR ≤ 1:20 · Min Land ≥ 5.0 Acres · Min FDR ≥ Rs 5,00,000</span></p>
+        </div>
+        <a class="btn btn-line btn-sm" href="admin.html">Configure Rules in Admin</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Declared and found</th>
+              <th>Forensic &amp; clarity status</th>
+              <th>Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fire NOC validity</strong></td>
+              <td>
+                <div class="sub">Declared: valid till 2027</div>
+                <strong class="bad">Found: expired March 2024</strong>
+              </td>
+              <td>
+                <span class="badge b-bad">Tampering flagged</span>
+                <div class="sub">Date modified digitally (ELA)</div>
+              </td>
+              <td>
+                <button class="btn btn-line btn-sm"
+                  data-doc-title="Fire Safety Certificate — Error Level Analysis"
+                  data-doc-declared="Valid till 31-12-2027"
+                  data-doc-extracted="Expired 31-03-2024 (ELA compression alert)"
+                  data-doc-excerpt="...This Fire Safety NOC is valid from 01-04-2023 up to [31-03-2024 -> edited to 31-12-2027 (ELA Variance: 38.4%)]..."
+                  data-ev="Error Level Analysis shows inconsistent compression around the expiry date digits, suggesting the year was edited after issue.">
+                  View
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Student to faculty ratio</strong></td>
+              <td>
+                <div class="sub">Declared: 1:20</div>
+                <strong class="bad">Found: 1:24.5</strong>
+              </td>
+              <td>
+                <span class="badge b-ok">Clean · DPDP Masked</span>
+                <div class="sub">Personal IDs masked as [ID Redacted]</div>
+              </td>
+              <td>
+                <button class="btn btn-line btn-sm"
+                  data-doc-title="Faculty List — EasyOCR Extraction &amp; DPDP Redaction"
+                  data-doc-declared="1:20 (120 Regular Faculty)"
+                  data-doc-extracted="1:24.5 (98 Faculty / 2,401 Students)"
+                  data-doc-excerpt="...Row 98: Prof. M. Selvam [Personal ID: [ID Redacted per DPDP Act 2023]] — Regular Faculty count verified: 98..."
+                  data-ev="EasyOCR extracted 98 regular faculty names against 2,401 enrolled students (1:24.5). This exceeds the AICTE norm of 1:20.">
+                  View
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Land area</strong></td>
+              <td>
+                <div class="sub">Declared: 5.2 acres</div>
+                <strong>Found: 5.2 acres</strong>
+              </td>
+              <td>
+                <span class="badge b-ok">QR verified</span>
+                <div class="sub">Matches land registry</div>
+              </td>
+              <td>
+                <button class="btn btn-line btn-sm"
+                  data-doc-title="Building &amp; Land Document — OCR &amp; QR Check"
+                  data-doc-declared="5.2 Acres"
+                  data-doc-extracted="5.20 Acres (Survey No. 48/2B)"
+                  data-doc-excerpt="...Schedule A: Contiguous institutional land measuring 5.20 Acres [QR Verified: TN-REG-CBE-482B]..."
+                  data-ev="OCR value matches the survey number resolved from the registry QR code.">
+                  View
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Fixed deposit amount</strong></td>
+              <td>
+                <div class="sub">Declared: Rs 5,00,000</div>
+                <strong>Found: Rs 5,00,000</strong>
+              </td>
+              <td>
+                <span class="badge b-ok">QR verified</span>
+                <div class="sub">Bank record matched</div>
+              </td>
+              <td>
+                <button class="btn btn-line btn-sm"
+                  data-doc-title="Fixed Deposit Receipt — Mandate Check"
+                  data-doc-declared="Rs 5,00,000"
+                  data-doc-extracted="Rs 5,00,000 (Joint AICTE Lien Active)"
+                  data-doc-excerpt="...FDR No. CB-2026-88412 for Rs 5,00,000/- maturing 14-08-2031 verified via Pyzbar QR..."
+                  data-ev="FDR number and maturity date match the issuing bank record (simulated).">
+                  View
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sec">Officer decision</h3>
+      <textarea id="noteBox" rows="2" placeholder="Remarks for the college (optional in this demo)"></textarea>
+      <div class="actions">
+        <button class="btn btn-ok" data-decision="approved">Approve EoA</button>
+        <button class="btn btn-warn" data-decision="clarify">Request clarification</button>
+        <button class="btn btn-bad" data-decision="rejected">Reject with note</button>
+        <button id="dlBtn" class="btn btn-line">Download report</button>
+      </div>
+      <p class="disclaimer">The AI only assists with pre-screening. The final decision rests with the AICTE officer.</p>
+    </section>
+  </main>
+
+  <div class="demo">
+    <span>Demo mode</span>
+    <a href="waiting.html">College view</a>
+    <a href="admin.html">Admin console</a>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box">
+      <button id="modalClose" class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="modalTitle">Evidence</h3>
+      <div class="evidence-compare">
+        <div class="ev-card"><span>Declared in Form</span><strong id="modalDeclared">—</strong></div>
+        <div class="ev-card ev-flagged"><span>Extracted / Found</span><strong id="modalExtracted">—</strong></div>
+      </div>
+      <div class="doc"><i></i><i class="w80"></i><i class="mark"></i><i class="w50"></i></div>
+      <blockquote id="modalExcerpt" class="source-quote"></blockquote>
+      <p id="modalText" class="muted" style="margin-bottom:0"></p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
